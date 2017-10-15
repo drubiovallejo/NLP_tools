@@ -22,7 +22,7 @@ public class NGramProbMain {
 		String fileName = "confucius.txt";
 		  
 		//Makes a string array from the words in the text file
-        String[] array = fileToArray(fileName);
+        	String[] array = fileToArray(fileName);
        	 
 	    
 		System.out.print("Enter a 1- or 2-word string: ");
@@ -46,51 +46,49 @@ public class NGramProbMain {
 
         
 		String[] array = null;
-        String line = null;
-        String st = null;
+        	String line = null;
+        	String st = null;
 
-	    try {
-	    	// FileReader reads text files in the default encoding.
-	        FileReader fileReader = new FileReader(fileName);
+	    	try {
+	    		// FileReader reads text files in the default encoding.
+	        	FileReader fileReader = new FileReader(fileName);
 
-	        // Always wrap FileReader in BufferedReader.
-	        BufferedReader bufferedReader = new BufferedReader(fileReader);
+	        	// Always wrap FileReader in BufferedReader.
+	        	BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-	        StringBuilder sb = new StringBuilder();
+	        	StringBuilder sb = new StringBuilder();
 	           
-	        while((line = bufferedReader.readLine()) != null) {
+	        	while((line = bufferedReader.readLine()) != null) {
 	               
-	        	//append each line with a space between them	        	   
-	        	sb = sb.append(line + " ");
-	        }   
+	        		//append each line with a space between them	        	   
+	        		sb = sb.append(line + " ");
+	        	}   
 	           
-	    	//Turns SB into String
-	    	st = sb.toString();
+	    		//Turns SB into String
+	    		st = sb.toString();
 	            
 	          	    		
-	    	//substitute full-stops by " #", 2 or more spaces between words by a single space, and eliminates all commas and semi-colons
-	    	st = st.replaceAll("\\.(?=\\s|$)", " #");
-	    	st = st.replaceAll("\\s{2,}", " ");
-	    	String sentence = st.replaceAll(";|,", "");	
+	    		//substitute full-stops by " #", 2 or more spaces between words by a single space, and eliminates all commas and semi-colons
+	    		st = st.replaceAll("\\.(?=\\s|$)", " #");
+	    		st = st.replaceAll("\\s{2,}", " ");
+	    		String sentence = st.replaceAll(";|,", "");	
 	    		
-	    	array = sentence.split(" ");
+	    		array = sentence.split(" ");
 	    		
-	    	for(int i=0; i< array.length ; i++){
+	    		for(int i=0; i< array.length ; i++){
 	    			
-	    		if( array[i].endsWith(".")){
+	    			if( array[i].endsWith(".")){
 	    	
-	    			int length = array[i].length();
-	    			String subSt = array[i].substring(0,length-1);
-	    			array[i] = subSt;
+	    				int length = array[i].length();
+	    				String subSt = array[i].substring(0,length-1);
+	    				array[i] = subSt;
 	    				
+	    			}
 	    		}
-	    	}
 		
-	    	//Always close files.
-	     	bufferedReader.close();   
-
-	     	    
-	    }
+	    		//Always close files.
+	     		bufferedReader.close();   
+		}
 	       
 	    catch(FileNotFoundException ex) {
 
@@ -104,7 +102,7 @@ public class NGramProbMain {
 	    }
 
 
-		return array;  		
+	return array;  		
 	}
 	
 	
