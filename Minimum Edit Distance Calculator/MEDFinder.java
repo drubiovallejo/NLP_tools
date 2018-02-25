@@ -1,8 +1,9 @@
-/*
-.:DRV:.
-
-Defines the class MEDFinder with the single method 'findDistance', which takes two strings and returns the matrix containing the derivation of the minimum edit distance of the two strings step by step.
-
+/**
+* 
+* @author: David Rubio Vallejo
+*
+* Defines the class MEDFinder with the single method 'findDistance', which takes two strings and returns the matrix containing the derivation of the minimum edit distance of the two strings step by step.
+*
 */
 
 public class MEDFinder {
