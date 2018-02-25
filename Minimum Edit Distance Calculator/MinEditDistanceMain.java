@@ -1,7 +1,8 @@
-/*
-.:DRV:.
-
-Contains the code for running the code in MEDFinder.
+/**
+*
+* @ David Rubio Vallejo
+*
+* This class contains the code for running the code in MEDFinder.
 */
 
 
@@ -13,26 +14,27 @@ public class MinEditDistanceMain {
 
 	public static void main(String[] args) {
 
-		//creates the objects
+		//creates the MED object
 		MEDFinder medf = new MEDFinder();
 		Scanner console = new Scanner(System.in);
 
-		//code to enter first input
+		//Stores the first input
 		System.out.print("Enter the first word: ");
 		String scanned1 = console.next(); 
 		 
-		//code to enter second input
+		//Stores the second input
 		System.out.print("Enter the second word: ");
 		String scanned2 = console.next();
 		
 		console.close();
 				
 			
-		//we pass the inputs to the method in the MEDFinder file and assign the returned matrix to the variable "finalMatrix"
+		//Passes the inputs to the method in the MEDFinder file and 
+		//assigns the returned matrix to the variable "finalMatrix"
 		String[][] finalMatrix = medf.findDistance(scanned1, scanned2); 
 		
 			
-		//final step: take the string in the bottom right corner and return it (fyi: it's in string form!).
+		//Take the string in the bottom right corner and return it (fyi: it's in string form!).
 		String MinEdDistance = finalMatrix[scanned2.length()][scanned1.length()];
 		
 		System.out.println("The minimum edit distance of those two words is: " + MinEdDistance);
