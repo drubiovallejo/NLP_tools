@@ -1,6 +1,6 @@
 /**
 *
-* @ David Rubio Vallejo
+* @author: David Rubio Vallejo
 *
 * This class contains the code for running the code in MEDFinder.
 */
