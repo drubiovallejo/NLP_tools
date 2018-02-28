@@ -143,7 +143,7 @@ public class NaiveBayes {
 				Scanner fileInput = new Scanner(f);
 				//For each class
 				for(String clas : this.prior.keySet()){
-					double sumLikelihoods = 1.0;
+					double sumLikelihoods = 0;
 					//While the file has a next word
 					while(fileInput.hasNext()){
 						//Get it and if it is in the set of words of interest, get its likelihood and store it
@@ -153,7 +153,7 @@ public class NaiveBayes {
 						}
 					}
 					//Store the class-probability for this file
-					classProbs.put(clas, this.prior.get(clas) * sumLikelihoods);
+					classProbs.put(clas, this.prior.get(clas) + sumLikelihoods);
 					//Create new scanner object to reset the pointer to the beginning of the file
 					fileInput = new Scanner(f);
 				}
@@ -207,15 +207,24 @@ public class NaiveBayes {
 		}
 		
 		//Calculates metrics		
-		double precision = tp/ (tp+fp);
-		double recall = tp/ (tp+fn);
-		double f1 = (2*precision*recall) / (precision+recall);
+		double pos_precision = tp/ (tp+fp);
+		double pos_recall = tp/ (tp+fn);
+		double pos_f1 = (2*pos_precision*pos_recall) / (pos_precision+pos_recall);
+		
+		double neg_precision = tn/ (tn+fn);
+		double neg_recall = tn/ (tn+fp);
+		double neg_f1 = (2*neg_precision*neg_recall) / (neg_precision+neg_recall);
+		
 		double accuracy = (tp+tn) / (tp+tn+fp+fn);
 		
-		System.out.println(tp + " " + fn + " " + fp);
-		System.out.println("Precision score for DevSet = " + precision);
-		System.out.println("Recall score for DevSet = " + recall);
-		System.out.println("F1 score for DevSet = " + f1);
+		System.out.println("(POS) Precision score for DevSet = " + pos_precision);
+		System.out.println("(POS) Recall score for DevSet = " + pos_recall);
+		System.out.println("(POS) F1 score for DevSet = " + pos_f1);
+		System.out.println();
+		System.out.println("(NEG) Precision score for DevSet = " + neg_precision);
+		System.out.println("(NEG) Recall score for DevSet = " + neg_recall);
+		System.out.println("(NEG) F1 score for DevSet = " + neg_f1);
+		System.out.println();		
 		System.out.println("Accuracy for DevSet = " + accuracy);
 	}
 	
